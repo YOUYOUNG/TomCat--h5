@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}	
+			#tomcat{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			#cymbal{
+				position: absolute;
+				left: 5%;
+				bottom: 40%;
+			}
+			#drink{
+				position: absolute;
+				left: 5%;
+				bottom: 30%;
+			}
+			#eat{
+				position: absolute;
+				left: 5%;
+				bottom: 20%;
+			}
+			#fart{
+				position: absolute;
+				right: 5%;
+				bottom: 40%;
+			}
+			#pie{
+				position: absolute;
+				right: 5%;
+				bottom: 30%;
+			}
+			#scratch{
+				position: absolute;
+				right: 5%;
+				bottom: 20%;
+			}
+			#head{
+				width: 265px;
+				height: 200px;
+				position: absolute;
+				top: 370px;
+				left: 354px;
+				opacity: 0;
+				
+			}
+			#stomach{
+				width: 265px;
+				height: 300px;
+				position: absolute;
+				top: 600px;
+				left: 354px;
+				opacity: 0;
+				
+			}
+			#tail{
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				top: 800px;
+				left:660px;
+				opacity: 0;
+				
+				
+			}
+			#footLeft{
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				top: 950px;
+				left:300px;
+				
+				opacity: 0;
+				
+			}
+			#footRight{
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				top: 950px;
+				left:500px;
+				
+				opacity: 0;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/first.jpg" id="tomcat"/>
+		<img src="img/Buttons/cymbal/cymbal.png"  id="cymbal"/>
+		<img src="img/Buttons/drink/drink.png" id="drink" />
+		<img src="img/Buttons/eat/eat.png" id="eat" />
+		<img src="img/Buttons/fart/fart.png" id="fart" />
+		<img src="img/Buttons/pie/pie.png" id="pie" />
+		<img src="img/Buttons/scratch/scratch.png" id="scratch" />
+		<div id="head">
+			
+		</div>
+		<div id="stomach"></div>
+		<div id="footLeft"></div>
+		<div id="footRight"></div>
+		<div id="tail"></div>
+		
+		<audio >
+		  <source src="mp3/kick.mp3" type="audio/mpeg">
+		 
+		</audio>
+		<script src="js/index.js"></script>
+		<script>
+			var timer;
+			document.getElementById('cymbal').onclick = function(){buttonAnimations('tomcat','cymbal',0,12)};
+			document.getElementById('drink').onclick = function(){buttonAnimations('tomcat','drink',0,80)};
+			document.getElementById('eat').onclick = function(){buttonAnimations('tomcat','eat',0,39)};
+			document.getElementById('fart').onclick = function(){buttonAnimations('tomcat','fart',0,27)};
+			document.getElementById('pie').onclick = function(){buttonAnimations('tomcat','pie',0,23)};
+			document.getElementById('scratch').onclick = function(){buttonAnimations('tomcat','scratch',0,55)};
+			
+			document.getElementById('head').onclick = function(){buttonAnimations('tomcat','Knockout',0,80)};
+			document.getElementById('stomach').onclick = function(){buttonAnimations('tomcat','stomach',0,33)};
+			document.getElementById('footLeft').onclick = function(){buttonAnimations('tomcat','footLeft',0,29)};
+			document.getElementById('footRight').onclick = function(){buttonAnimations('tomcat','footRight',0,29)};
+			document.getElementById('tail').onclick = function(){buttonAnimations('tomcat','angry',0,25)};
+
+			function buttonAnimations(mainId,id,index,end){
+				clearInterval(timer);
+				var img = document.getElementById(mainId);
+				
+			    timer=setInterval(function(){	
+					if(index == end){
+						clearInterval(timer);
+					}
+					img.src = 'img/Animations/'+id+'/'+id+'_'+getIndex(index)+'.jpg';
+					index++;
+				},100);
+				if(id == "footLeft"  ||  id == "footRight"){
+					var audio =document.getElementsByTagName("audio")[0];
+					audio.play();
+				}
+				
+			}
+			function getIndex(index){
+				if(index <10){
+					return '0'+index;
+				}else{
+					return index;
+				}
+			}
+		</script>
+	</body>
+</html>
